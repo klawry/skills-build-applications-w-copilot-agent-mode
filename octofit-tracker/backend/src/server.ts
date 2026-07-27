@@ -1,3 +1,4 @@
+import cors from 'cors';
 import express from 'express';
 import './config/database';
 import usersRouter from './routes/users';
@@ -18,6 +19,7 @@ function getApiUrl(): string {
 
 
 app.use(express.json());
+app.use(cors());
 
 app.get('/api/health', (_req, res) => {
   res.status(200).json({ status: 'ok', apiBaseUrl: getApiUrl() });
